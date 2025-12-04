@@ -1,51 +1,103 @@
-from base64 import b64encode
-
-# load logo
-with open("/mnt/data/logo2_new_new.png","rb") as f:
-    b64 = b64encode(f.read()).decode()
-
-html = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <title>Power BI Dashboard Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <style>
-  body {{ margin:0; padding:0; font-family:Arial, sans-serif; background:#ffffff; color:#222; }}
-  header {{ padding:25px; text-align:center; }}
-  .logo img {{ max-width:420px; height:auto; }}
-  .section {{ padding:40px 20px; max-width:900px; margin:auto; }}
-  .card {{
-    background:#f7f7f7;
-    padding:20px;
-    border-radius:12px;
-    margin:18px 0;
-    border:1px solid #ddd;
-  }}
-  h1 {{ text-align:center; font-size:32px; }}
-  h2 {{ text-align:center; }}
-  p {{ color:#444; }}
-  footer {{ text-align:center; padding:20px; color:#777; }}
+  body { margin:0; padding:0; font-family:Arial, sans-serif; background:#ffffff; color:#222; }
+
+  header { padding:25px; text-align:center; }
+
+  /* Logo */
+  .logo img { 
+      max-width:420px; 
+      height:auto; 
+      margin-bottom:10px;
+  }
+
+  /* Flashing animated Augmented Analytics */
+  .flash-text {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px;
+      animation: flash 2.2s infinite ease-in-out;
+  }
+
+  @keyframes flash {
+      0% { color:#1e90ff; }
+      50% { color:#ffffff; text-shadow:0 0 8px #1e90ff; }
+      100% { color:#1e90ff; }
+  }
+
+  /* Smooth fade-in animation */
+  .fade-in {
+      opacity:0;
+      animation: fadeIn 2s forwards;
+  }
+
+  @keyframes fadeIn {
+      to { opacity:1; }
+  }
+
+  .section {
+      padding:40px 20px;
+      max-width:900px;
+      margin:auto;
+  }
+
+  /* Service cards */
+  .card {
+      background:#f7f7f7;
+      padding:20px;
+      border-radius:12px;
+      margin:18px 0;
+      border:1px solid #ddd;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+      transform: translateY(-4px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  h1 { text-align:center; font-size:32px; }
+  h2 { text-align:center; }
+  p { color:#444; }
+
+  footer {
+      text-align:center;
+      padding:20px;
+      color:#777;
+      margin-top:40px;
+  }
 </style>
 </head>
 <body>
 
-<header>
+<header class="fade-in">
+  
+  <!-- LOGO — requires you to upload a file named 'logo.png' to your repo -->
   <div class="logo">
-    <img src="data:image/png;base64,{b64}" alt="Company Logo">
+      <img src="logo.png" alt="Company Logo">
   </div>
+
   <h1>We Provide Professional Power BI Dashboard Services</h1>
+
+  <div class="flash-text">
+      Augmented Analytics Powered Dashboards
+  </div>
 </header>
 
-<section class="section">
+<section class="section fade-in">
 <p style="text-align:center; max-width:700px; margin:auto;">
 We build clean, modern, decision-ready Power BI dashboards for businesses that want clarity, speed, 
-and confidence in their data. Our dashboards are fully customized for your KPIs and business needs.
+and confidence in their data — enhanced with <strong>Augmented Analytics</strong> to help uncover patterns, insights, and smarter decisions.
 </p>
 </section>
 
-<section class="section">
+<section class="section fade-in">
 <h2>What We Offer</h2>
 
 <div class="card">
@@ -70,7 +122,7 @@ and confidence in their data. Our dashboards are fully customized for your KPIs 
 
 </section>
 
-<section class="section" id="contact">
+<section class="section fade-in" id="contact">
 <h2>Contact</h2>
 <div class="card">
   <p><strong>Email:</strong> ismayil.jumshudov@gmail.com</p>
@@ -79,16 +131,9 @@ and confidence in their data. Our dashboards are fully customized for your KPIs 
 </div>
 </section>
 
-<footer>
+<footer class="fade-in">
   © 2025 Power BI Dashboard Services
 </footer>
 
 </body>
 </html>
-"""
-
-path="/mnt/data/powerbi_white_with_logo.html"
-with open(path,"w") as f:
-    f.write(html)
-
-path

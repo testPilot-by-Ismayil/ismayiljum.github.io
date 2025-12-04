@@ -1,0 +1,94 @@
+from base64 import b64encode
+
+# load logo
+with open("/mnt/data/logo2_new_new.png","rb") as f:
+    b64 = b64encode(f.read()).decode()
+
+html = f"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Power BI Dashboard Services</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  body {{ margin:0; padding:0; font-family:Arial, sans-serif; background:#ffffff; color:#222; }}
+  header {{ padding:25px; text-align:center; }}
+  .logo img {{ max-width:420px; height:auto; }}
+  .section {{ padding:40px 20px; max-width:900px; margin:auto; }}
+  .card {{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:12px;
+    margin:18px 0;
+    border:1px solid #ddd;
+  }}
+  h1 {{ text-align:center; font-size:32px; }}
+  h2 {{ text-align:center; }}
+  p {{ color:#444; }}
+  footer {{ text-align:center; padding:20px; color:#777; }}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="data:image/png;base64,{b64}" alt="Company Logo">
+  </div>
+  <h1>We Provide Professional Power BI Dashboard Services</h1>
+</header>
+
+<section class="section">
+<p style="text-align:center; max-width:700px; margin:auto;">
+We build clean, modern, decision-ready Power BI dashboards for businesses that want clarity, speed, 
+and confidence in their data. Our dashboards are fully customized for your KPIs and business needs.
+</p>
+</section>
+
+<section class="section">
+<h2>What We Offer</h2>
+
+<div class="card">
+  <h3>Custom Power BI Dashboards</h3>
+  <p>Unique dashboards designed around your KPIs, workflows, and industry standards.</p>
+</div>
+
+<div class="card">
+  <h3>Data Modeling & DAX</h3>
+  <p>Clean, optimized models with accurate and efficient DAX calculations.</p>
+</div>
+
+<div class="card">
+  <h3>Dashboard Redesign & Cleanup</h3>
+  <p>We modernize old dashboards into beautiful, polished, and highly functional visuals.</p>
+</div>
+
+<div class="card">
+  <h3>Ongoing Support</h3>
+  <p>Monthly updates, KPI additions, maintenance, and performance improvements.</p>
+</div>
+
+</section>
+
+<section class="section" id="contact">
+<h2>Contact</h2>
+<div class="card">
+  <p><strong>Email:</strong> ismayil.jumshudov@gmail.com</p>
+  <p><strong>Phone:</strong> 516.514.4400</p>
+  <p><strong>Location:</strong> Remote / Worldwide</p>
+</div>
+</section>
+
+<footer>
+  © 2025 Power BI Dashboard Services
+</footer>
+
+</body>
+</html>
+"""
+
+path="/mnt/data/powerbi_white_with_logo.html"
+with open(path,"w") as f:
+    f.write(html)
+
+path
